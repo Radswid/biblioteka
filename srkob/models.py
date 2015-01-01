@@ -21,6 +21,8 @@ class books(models.Model):
     author = models.ForeignKey(author)
     about = models.TextField('Opis')
     state = models.BooleanField('Wypożyczona')
+    genre = models.CharField('Gatunek', max_length=50)
+    sub_genere = models.CharField('Gatunki', max_length=150)
 
     class Meta:
         verbose_name = "Książka"
