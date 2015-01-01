@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from rango.models import UserProfile
+#from srkob.models import Profile
 from django.contrib.auth.models import User
 from django import forms
 
@@ -18,7 +18,7 @@ class author(models.Model):
 class books(models.Model):
     title = models.CharField('Tytuł', max_length=50)
     slug = models.SlugField('Odnośnik', unique=True, max_length=100)
-    author = models.ForeignKey('Autor', author)
+    author = models.ForeignKey(author)
     about = models.TextField('Opis')
     state = models.BooleanField('Wypożyczona')
 
@@ -29,10 +29,10 @@ class books(models.Model):
     def __unicode__(self):
         return self.title
 
-class UserProfile(models.Model):
+class Profile(models.Model):
     user = models.OneToOneField(User)
-    address = model.TextField('Adres')
-    p_number = model.CharField('Pesel', max_length=11)
+    address = models.TextField('Adres')
+    p_number = models.CharField('Pesel', max_length=11)
     
     class Meta:
         verbose_name = "Profil"
